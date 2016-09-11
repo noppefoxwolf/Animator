@@ -11,7 +11,7 @@ import UIKit
 public final class Animator {
   private var duration = 10.0
   private var currentTime  = 0.0
-  private var frameRate = 1.0 / 30.0
+  private var frameRate = 30.0
   private var timer: NSTimer? = nil
   private var curve: Curve
   private var animations: ((value: CGFloat)->Void)? = nil
@@ -29,7 +29,7 @@ public final class Animator {
     timer?.invalidate()
     timer = nil
     currentTime = 0
-    timer = NSTimer.scheduledTimerWithTimeInterval(frameRate, target: self, selector: #selector(Animator.update), userInfo: nil, repeats: true)
+    timer = NSTimer.scheduledTimerWithTimeInterval(1.0 / frameRate, target: self, selector: #selector(Animator.update), userInfo: nil, repeats: true)
   }
   
   @objc private func update() {
@@ -38,7 +38,7 @@ public final class Animator {
     dispatch_async(dispatch_get_main_queue()) { () -> Void in
       self.animations?(value: currentValue)
     }
-    currentTime += frameRate
+    currentTime += (1.0 / frameRate)
     if (currentTime >= duration) {
       timer?.invalidate()
       timer = nil

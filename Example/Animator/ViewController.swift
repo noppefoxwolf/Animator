@@ -30,20 +30,20 @@ class ViewController: UIViewController {
   }
   
   @IBAction func startAction(sender: AnyObject) {
-    Animator(duration: 1.0, frameRate: 1.0/30.0, curve: Curve.linear(), animations: { (value) in
+    Animator(duration: 1.0, frameRate: 30.0, curve: Curve.linear(), animations: { (value) in
       self.v0.center = CGPoint(x: self.view.bounds.width * value, y: 100)
     }).resume()
-    Animator(duration: 1.0, frameRate: 1.0/30.0, curve: Curve.easeIn(), animations: { (value) in
+    Animator(duration: 1.0, frameRate: 45.0, curve: Curve.easeIn(), animations: { (value) in
       self.v1.center = CGPoint(x: self.view.bounds.width * value, y: 200)
     }).resume()
-    Animator(duration: 1.0, frameRate: 1.0/30.0, curve: Curve.easeOut(), animations: { (value) in
+    Animator(duration: 1.0, frameRate: 60.0, curve: Curve.easeOut(), animations: { (value) in
       self.v2.center = CGPoint(x: self.view.bounds.width * value, y: 300)
     }).resume()
     
     let curve = Curve { (x) -> CGFloat in
       return CGFloat(sin(x * 4.0))
     }
-    Animator(duration: 1.0, frameRate: 1.0/60.0, curve: curve, animations: { (value) in
+    Animator(duration: 1.0, frameRate: 60.0, curve: curve, animations: { (value) in
       self.v3.center = CGPoint(x: self.view.bounds.width * value, y: 400)
     }).resume()
   }
