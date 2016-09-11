@@ -14,10 +14,10 @@ public final class Animator {
   private var frameRate = 1.0 / 30.0
   private var timer: NSTimer? = nil
   private var curve: Curve
-  private var animations: ((value: Double)->Void)? = nil
+  private var animations: ((value: CGFloat)->Void)? = nil
   private var completion: (()->Void)? = nil
   
-  public init(duration: NSTimeInterval, frameRate: Double = 1.0 / 30.0, curve: Curve = Curve.linear(), animations: ((value: Double) -> Void), completion: (() -> Void)? = nil) {
+  public init(duration: NSTimeInterval, frameRate: Double = 1.0 / 30.0, curve: Curve = Curve.linear(), animations: ((value: CGFloat) -> Void), completion: (() -> Void)? = nil) {
     self.duration = duration
     self.frameRate = frameRate
     self.animations = animations
