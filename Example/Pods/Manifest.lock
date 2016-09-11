@@ -1,0 +1,16 @@
+PODS:
+  - Animator (0.1.0)
+
+DEPENDENCIES:
+  - Animator (from `../`)
+
+EXTERNAL SOURCES:
+  Animator:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Animator: c152d5bdd045610e9049494f4ccc4f39cc057a07
+
+PODFILE CHECKSUM: d7abff41a414232a68456ebfa5c784221cbcf5b6
+
+COCOAPODS: 1.1.0.beta.1

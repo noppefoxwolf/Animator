@@ -1,0 +1,22 @@
+{
+  "name": "Animator",
+  "version": "0.1.0",
+  "summary": "A short description of Animator.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/<GITHUB_USERNAME>/Animator",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Tomoya Hirano": "tomoya.hirano@dena.com"
+  },
+  "source": {
+    "git": "https://github.com/<GITHUB_USERNAME>/Animator.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "Animator/Classes/**/*"
+}

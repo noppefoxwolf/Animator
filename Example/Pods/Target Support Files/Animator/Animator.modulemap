@@ -1,0 +1,6 @@
+framework module Animator {
+  umbrella header "Animator-umbrella.h"
+
+  export *
+  module * { export * }
+}
