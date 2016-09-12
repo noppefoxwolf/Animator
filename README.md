@@ -15,7 +15,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 #Usage
 
 ```
-Animator(duration: 1.0, frameRate: 1.0/30.0, curve: Curve.easeOut(), animations: { (value) in
+Animator(duration: 1.0, frameRate: 30.0, curve: Curve.easeOut(), animations: { (value) in
   self.v.center = CGPoint(x: self.view.bounds.width * value, y: 300)
 }).resume()
 ```
