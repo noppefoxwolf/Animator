@@ -1,5 +1,5 @@
 PODS:
-  - Animator (0.3.0)
+  - Animator (0.3.1)
 
 DEPENDENCIES:
   - Animator (from `../`)
@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Animator: fe9792506947b87342ea42063a704ef61ea64a28
+  Animator: 2f99afec878e18f9985c715a3c0e30a60c39a59a
 
-PODFILE CHECKSUM: d7abff41a414232a68456ebfa5c784221cbcf5b6
+PODFILE CHECKSUM: ebc93fb15c060d372c60ca507894a8acc3f7d1ea
 
 COCOAPODS: 1.1.0.rc.2
