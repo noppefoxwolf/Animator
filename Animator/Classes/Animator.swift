@@ -12,12 +12,12 @@ public final class Animator {
   private var duration = 10.0
   private var currentTime  = 0.0
   private var frameRate = 30.0
-  private var timer: NSTimer? = nil
+  private var timer: Timer? = nil
   private var curve: Curve
-  private var animations: ((value: CGFloat)->Void)? = nil
+  private var animations: ((_ value: CGFloat)->Void)? = nil
   private var completion: (()->Void)? = nil
   
-  public init(duration: NSTimeInterval, frameRate: Double = 1.0 / 30.0, curve: Curve = Curve.linear(), animations: ((value: CGFloat) -> Void), completion: (() -> Void)? = nil) {
+  public init(duration: TimeInterval, frameRate: Double = 1.0 / 30.0, curve: Curve = Curve.linear(), animations: @escaping ((_ value: CGFloat) -> Void), completion: (() -> Void)? = nil) {
     self.duration = duration
     self.frameRate = frameRate
     self.animations = animations
@@ -29,20 +29,20 @@ public final class Animator {
     timer?.invalidate()
     timer = nil
     currentTime = 0
-    timer = NSTimer.scheduledTimerWithTimeInterval(1.0 / frameRate, target: self, selector: #selector(Animator.update), userInfo: nil, repeats: true)
+    timer = Timer.scheduledTimer(timeInterval: 1.0 / frameRate, target: self, selector: #selector(Animator.update), userInfo: nil, repeats: true)
   }
   
   @objc private func update() {
     let x = currentTime / duration
     let currentValue = curve.calc(x)
-    dispatch_async(dispatch_get_main_queue()) { () -> Void in
-      self.animations?(value: currentValue)
+    DispatchQueue.main.async { [weak self] () -> Void in
+      self?.animations?(currentValue)
     }
     currentTime += (1.0 / frameRate)
     if (currentTime >= duration) {
       timer?.invalidate()
       timer = nil
-      dispatch_async(dispatch_get_main_queue()) { () -> Void in
+      DispatchQueue.main.async { () -> Void in
         self.completion?()
       }
     }

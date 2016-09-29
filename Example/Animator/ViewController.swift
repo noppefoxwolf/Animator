@@ -11,10 +11,10 @@ import Animator
 
 class ViewController: UIViewController {
 
-  private let v0 = UIView.createDummyView(UIColor.redColor())
-  private let v1 = UIView.createDummyView(UIColor.blueColor())
-  private let v2 = UIView.createDummyView(UIColor.greenColor())
-  private let v3 = UIView.createDummyView(UIColor.yellowColor())
+  fileprivate let v0 = UIView.createDummyView(UIColor.red)
+  fileprivate let v1 = UIView.createDummyView(UIColor.blue)
+  fileprivate let v2 = UIView.createDummyView(UIColor.green)
+  fileprivate let v3 = UIView.createDummyView(UIColor.yellow)
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -29,7 +29,7 @@ class ViewController: UIViewController {
     v3.center = CGPoint(x: 0, y: 400)
   }
   
-  @IBAction func startAction(sender: AnyObject) {
+  @IBAction func startAction(_ sender: AnyObject) {
     Animator(duration: 1.0, frameRate: 30.0, curve: Curve.linear(), animations: { (value) in
       self.v0.center = CGPoint(x: self.view.bounds.width * value, y: 100)
     }).resume()
@@ -50,7 +50,7 @@ class ViewController: UIViewController {
 }
 
 extension UIView {
-  static func createDummyView(color: UIColor) -> UIView {
+  static func createDummyView(_ color: UIColor) -> UIView {
     let v = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
     v.backgroundColor = color
     return v

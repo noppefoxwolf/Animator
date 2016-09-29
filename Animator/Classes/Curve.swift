@@ -8,15 +8,15 @@
 
 import UIKit
 
-public class Curve {
-  public typealias Calculator = ((x: Double)-> CGFloat)
-  private var calc:Calculator
-  public init(calc: Calculator) {
+open class Curve {
+  public typealias Calculator = ((_ x: Double)-> CGFloat)
+  fileprivate var calc:Calculator
+  public init(calc: @escaping Calculator) {
     self.calc = calc
   }
   
-  internal func calc(x: Double) -> CGFloat {
-    return calc(x: x)
+  internal func calc(_ x: Double) -> CGFloat {
+    return calc(x)
   }
 }
 
