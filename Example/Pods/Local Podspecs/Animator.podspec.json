@@ -1,6 +1,6 @@
 {
   "name": "Animator",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "summary": "Curve value creator.",
   "description": "Animator is able to create original curve value. and able to set framerate.",
   "homepage": "https://github.com/noppefoxwolf/Animator",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/noppefoxwolf/Animator.git",
-    "tag": "0.3.2"
+    "tag": "0.3.3"
   },
   "platforms": {
     "ios": "10.0"
