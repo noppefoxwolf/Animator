@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Animator'
-  s.version          = '0.3.2'
+  s.version          = '0.3.3'
   s.summary          = 'Curve value creator.'
 
 # This description is used to generate tags and improve search results.
@@ -28,7 +28,7 @@ Animator is able to create original curve value. and able to set framerate.
   s.source           = { :git => 'https://github.com/noppefoxwolf/Animator.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/noppefoxwolf'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '10.0'
 
   s.source_files = 'Animator/Classes/**/*'
   

@@ -11,13 +11,13 @@ import UIKit
 public final class Animator {
   private var duration = 10.0
   private var currentTime  = 0.0
-  private var frameRate = 30.0
-  private var timer: Timer? = nil
+  private var frameRate: Int = 30
+  private var linker: CADisplayLink? = nil
   private var curve: Curve
   private var animations: ((_ value: CGFloat)->Void)? = nil
   private var completion: (()->Void)? = nil
   
-  public init(duration: TimeInterval, frameRate: Double = 1.0 / 30.0, curve: Curve = Curve.linear(), animations: @escaping ((_ value: CGFloat) -> Void), completion: (() -> Void)? = nil) {
+  public init(duration: TimeInterval, frameRate: Int = 30, curve: Curve = Curve.linear(), animations: @escaping ((_ value: CGFloat) -> Void), completion: (() -> Void)? = nil) {
     self.duration = duration
     self.frameRate = frameRate
     self.animations = animations
@@ -26,10 +26,14 @@ public final class Animator {
   }
   
   public func resume() {
-    timer?.invalidate()
-    timer = nil
+    linker?.remove(from: .current, forMode: .commonModes)
+    linker?.invalidate()
+    linker = nil
     currentTime = 0
-    timer = Timer.scheduledTimer(timeInterval: 1.0 / frameRate, target: self, selector: #selector(Animator.update), userInfo: nil, repeats: true)
+    
+    linker = CADisplayLink(target: self, selector: #selector(Animator.update))
+    linker?.preferredFramesPerSecond = frameRate
+    linker?.add(to: .current, forMode: RunLoopMode.commonModes)
   }
   
   @objc private func update() {
@@ -38,10 +42,11 @@ public final class Animator {
     DispatchQueue.main.async { [weak self] () -> Void in
       self?.animations?(currentValue)
     }
-    currentTime += (1.0 / frameRate)
+    currentTime += (1.0 / Double(frameRate))
     if (currentTime >= duration) {
-      timer?.invalidate()
-      timer = nil
+      linker?.remove(from: .current, forMode: .commonModes)
+      linker?.invalidate()
+      linker = nil
       DispatchQueue.main.async { () -> Void in
         self.completion?()
       }
